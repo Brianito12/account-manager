@@ -1,0 +1,121 @@
+ Bank Account Transaction System
+ 1. Algorithm
+
+ Step-by-step Algorithm
+
+1. Start the bank account transaction system.
+
+2. Select the user's bank account.
+
+3. Get the user's current account balance.
+
+4. Get the type of transaction the user wants to perform:
+
+   * Deposit
+   * Withdrawal
+   * Transfer
+
+5. Get the amount of money involved in the transaction.
+
+6. If the transaction is a deposit, add the transaction amount to the user's account balance and approve the transaction.
+
+7. If the transaction is a withdrawal or transfer, check whether the user has enough money in their account.
+
+8. If the transaction amount is greater than the account balance, block the transaction and display an insufficient funds message.
+
+9. If the transaction is a withdrawal, check how many withdrawals have been attempted within the last 10 seconds.
+
+10. If the user has attempted more than 3 withdrawals within 10 seconds, block the transaction and flag it as suspicious.
+
+11. Determine the user's average transaction amount.
+
+12. Compare the current transaction amount with 5 times the user's average transaction amount.
+
+13. If the current transaction amount is 5 times larger than the user's normal average, block the transaction and flag it as suspicious.
+
+14. If the transaction passes all the required security checks, approve the transaction.
+
+15. Update the user's account balance after an approved withdrawal or transfer.
+
+16. Record the approved transaction.
+
+17. Display the result of the transaction to the user.
+
+18. End the transaction process. 
+
+
+
+2. Pseudocode
+
+SART
+
+
+SET accountBalance
+SET transactionType
+SET transactionAmount
+SET averageTransaction
+SET withdrawalHistory
+
+INPUT accountBalance
+INPUT transactionType
+INPUT transactionAmount
+INPUT averageTransaction
+INPUT withdrawalHistory
+
+IF transactionType = "deposit" THEN
+
+    accountBalance = accountBalance + transactionAmount
+
+    OUTPUT "Deposit approved"
+    OUTPUT accountBalance
+
+ELSE IF transactionType = "withdrawal" THEN
+
+    IF transactionAmount > accountBalance THEN
+
+        OUTPUT "Transaction blocked: Insufficient funds"
+
+    ELSE IF number of withdrawals in the last 10 seconds > 3 THEN
+
+        OUTPUT "Transaction blocked: Rapid withdrawals detected"
+
+    ELSE IF transactionAmount >= averageTransaction * 5 THEN
+
+        OUTPUT "Transaction blocked: Suspicious transaction amount"
+
+    ELSE
+
+        accountBalance = accountBalance - transactionAmount
+
+        OUTPUT "Withdrawal approved"
+        OUTPUT accountBalance
+
+    END IF
+
+ELSE IF transactionType = "transfer" THEN
+
+    IF transactionAmount > accountBalance THEN
+
+        OUTPUT "Transaction blocked: Insufficient funds"
+
+    ELSE IF transactionAmount >= averageTransaction * 5 THEN
+
+        OUTPUT "Transaction blocked: Suspicious transaction amount"
+
+    ELSE
+
+        accountBalance = accountBalance - transactionAmount
+
+        OUTPUT "Transfer approved"
+        OUTPUT accountBalance
+
+    END IF
+
+ELSE
+
+    OUTPUT "Invalid transaction type"
+
+END IF
+```
+
+END
